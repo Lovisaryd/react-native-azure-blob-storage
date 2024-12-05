@@ -92,4 +92,17 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
         this.CONTAINER_NAME = constainer_name;
         this.SAS = sas_token;
     }
+
+      @ReactMethod
+    public void resetConfiguration(Promise promise) {
+        try {
+            this.ACCOUNT_NAME = "";
+            this.ACCOUNT_KEY = "";
+            this.CONTAINER_NAME = "";
+            this.SAS = false;
+            promise.resolve("Configuration reset successfully.");
+        } catch (Exception e) {
+            promise.reject(E_LAYOUT_ERROR, e);
+        }
+    }
 }
